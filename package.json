@@ -1,0 +1,25 @@
+{
+  "name": "classromapi",
+  "version": "1.0.0",
+  "description": "c'est une api concu en node.js",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gaetan-bamongoyo/classromapi.git"
+  },
+  "author": "gaetan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gaetan-bamongoyo/classromapi/issues"
+  },
+  "homepage": "https://github.com/Gaetan-bamongoyo/classromapi#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.0",
+    "mysql2": "^3.11.3",
+    "sequelize": "^6.37.3"
+  }
+}
