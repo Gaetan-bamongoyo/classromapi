@@ -45,7 +45,22 @@ const getAllCoursByIdUser = async (req, res)=>{
     res.status(200).send(data)
 }
 
+const getOnlyCoursById = async(req, res)=>{
+    let id = req.params.id
+    const data = await Cours.findOne({
+        where: {id : id},
+        include: [
+            {
+                model: Users,
+                as: 'users'
+            }
+        ]
+    })
+    res.status(200).send(data)
+}
+
 module.exports = {
     addCours,
-    getAllCoursByIdUser
+    getAllCoursByIdUser,
+    getOnlyCoursById
 }
