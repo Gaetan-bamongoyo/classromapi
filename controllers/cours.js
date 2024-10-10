@@ -25,7 +25,7 @@ const addCours = async (req, res) => {
             user_id: req.body.user_id,
         }
         const cours = await Cours.create(info)
-        res.status(200).send(cours)
+        res.status(200).send({cours, message: true})
     } catch (error) {
         res.status(500).send({ message: 'Erreur lors de la création du cours', error });
     }
