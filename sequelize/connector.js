@@ -45,7 +45,7 @@ db.sequelize = sequelize
 
 db.user = require('../models/user.js')(sequelize, DataTypes)
 db.cours = require('../models/cours.js')(sequelize, DataTypes)
-// db.courant = require('../model/courant.js')(sequelize, DataTypes)
+db.contenucours = require('../models/contenucours.js')(sequelize, DataTypes)
 
 db.user.hasMany(db.cours, {
     foreignKey: 'user_id',
@@ -54,6 +54,15 @@ db.user.hasMany(db.cours, {
 db.cours.belongsTo(db.user, {
     foreignKey: 'user_id',
     as: 'users'
+})
+
+db.cours.hasMany(db.contenucours, {
+    foreignKey: 'cours_id',
+    as: 'coutenus'
+})
+db.contenucours.belongsTo(db.cours, {
+    foreignKey: 'cours_id',
+    as: 'cours'
 })
 
 db.sequelize.sync({ force: false })

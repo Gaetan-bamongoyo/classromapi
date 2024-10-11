@@ -17,9 +17,11 @@ app.use(express.urlencoded({ extended: true }))
 // route
 const routeruser  = require('./routes/user')
 const routercours  = require('./routes/cours')
+const routercontenucours = require('./routes/contenucours')
 // 
 app.use('/classrom/user', routeruser)
 app.use('/classrom/cours', routercours)
+app.use('/classrom/contenu', routercontenucours)
 
 // test api
 app.get('/', (req, res)=>{

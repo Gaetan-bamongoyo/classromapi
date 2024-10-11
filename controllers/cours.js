@@ -38,7 +38,7 @@ const getAllCoursByIdUser = async (req, res)=>{
         include: [
             {
                 model: Users,
-                as: 'users'
+                as: 'users' 
             }
         ]
     })
