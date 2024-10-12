@@ -53,12 +53,12 @@ db.cours.hasMany(db.contenucours, {
 })
 db.contenucours.belongsTo(db.cours, {
     foreignKey: 'cours_id',
-    as: 'cours'
+    as: 'contenucours'
 })
 
 db.cours.hasMany(db.suivrecours,{
     foreignKey: 'coursId_id',
-    as: 'cours'
+    as: 'suivrecours'
 })
 db.suivrecours.belongsTo(db.cours,{
     foreignKey: 'coursId_id',

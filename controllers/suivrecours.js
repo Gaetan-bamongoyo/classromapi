@@ -8,33 +8,39 @@ const Cours = db.cours
 
 const addSuivreCours = async (req, res) => {
     try {
-        const {code} = req.body;
-        const cours = await Cours.findOne({where: {code:code}})
-        if(cours){
+        const { code } = req.body;
+        const cours = await Cours.findOne({ where: { code: code } })
+        if (cours) {
             let info = {
                 coursId_id: cours.id,
                 userId_id: req.body.userId_id,
             }
             const contenucours = await SuivreCours.create(info)
-            res.status(200).send({contenucours, message: true})
+            res.status(200).send({ contenucours, message: true })
         }
     } catch (error) {
         res.status(500).send({ message: 'Erreur lors de la création du cours', error });
     }
 }
 
-const getAllCoursByIdCours = async (req, res)=>{
+const getAllCoursByIdCours = async (req, res) => {
     let id = req.params.id
     const data = await SuivreCours.findAll({
-        where: {userId_id : id},
+        where: { userId_id: id },
         include: [
             {
                 model: Users,
-                as: 'suivreuser' 
+                as: 'suivreuser'
             },
             {
                 model: Cours,
-                as: 'suivre'
+                as: 'suivre',
+                include: [
+                    {
+                        model: Users,
+                        as: 'users'
+                    }
+                ]
             }
         ]
     })
