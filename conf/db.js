@@ -1,30 +1,15 @@
-// module.exports={
-//     HOST: 'localhost',
-//     USER: 'root',
-//     PASSWORD: '',
-//     DB: 'db_classroom',
-//     dialect: 'mysql',
-
-//         pool: {
-//             maw: 5,
-//             min: 0,
-//             acquire: 30000,
-//             idle: 10000,
-//         }
-
-// }
-module.exports={
-    HOST: './dev.sqlite',
-    USER: 'user',
-    PASSWORD: 'pass',
+module.exports = {
+    HOST: 'mysql-185158-0.cloudclusters.net',
+    USER: 'classrom',
+    PASSWORD: '@gaetan1234A',
     DB: 'db_classroom',
-    dialect: 'sqlite',
+    dialect: 'mysql',
+    PORT: '10150',
 
-        // pool: {
-        //     maw: 5,
-        //     min: 0,
-        //     acquire: 30000,
-        //     idle: 10000,
-        // }
-
+    // pool: {
+    //     max: 5,
+    //     min: 0,
+    //     acquire: 30000,
+    //     idle: 10000,
+    // }
 }
