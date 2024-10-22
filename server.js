@@ -15,8 +15,8 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 // route
-const routeruser  = require('./routes/user')
-const routercours  = require('./routes/cours')
+const routeruser = require('./routes/user')
+const routercours = require('./routes/cours')
 const routercontenucours = require('./routes/contenucours')
 const routersuivrecours = require('./routes/suivre')
 // 
@@ -25,8 +25,9 @@ app.use('/classrom/cours', routercours)
 app.use('/classrom/contenu', routercontenucours)
 app.use('/classrom/suivre', routersuivrecours)
 
+
 // test api
-app.get('/', (req, res)=>{
+app.get('/', (req, res) => {
     res.json({ message: 'hello from api' })
 })
 
@@ -34,6 +35,6 @@ app.get('/', (req, res)=>{
 const PORT = process.env.PORT || 8080
 
 // server
-app.listen(PORT, ()=>{
+app.listen(PORT, () => {
     console.log('server is running on port')
 })
