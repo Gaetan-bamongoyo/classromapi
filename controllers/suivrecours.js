@@ -47,7 +47,22 @@ const getAllCoursByIdCours = async (req, res) => {
     res.status(200).send(data)
 }
 
+const getAllParticipant = async(req, res)=>{
+    let id = req.params.id
+    const data = await SuivreCours.findAll({
+        where: { coursId_id: id },
+        include: [
+            {
+                model: Users,
+                as: 'suivreuser'
+            }
+        ]
+    })
+    res.status(200).send(data)
+}
+
 module.exports = {
     addSuivreCours,
-    getAllCoursByIdCours
+    getAllCoursByIdCours,
+    getAllParticipant
 }

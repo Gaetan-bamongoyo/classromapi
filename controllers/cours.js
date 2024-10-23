@@ -45,6 +45,8 @@ const getAllCoursByIdUser = async (req, res)=>{
     res.status(200).send(data)
 }
 
+
+
 const getOnlyCoursById = async(req, res)=>{
     let id = req.params.id
     const data = await Cours.findOne({
