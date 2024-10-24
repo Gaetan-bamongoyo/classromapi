@@ -37,6 +37,44 @@ db.user = require('../models/user.js')(sequelize, DataTypes)
 db.cours = require('../models/cours.js')(sequelize, DataTypes)
 db.contenucours = require('../models/contenucours.js')(sequelize, DataTypes)
 db.suivrecours = require('../models/suivrecours.js')(sequelize, DataTypes)
+db.devoir = require('../models/devoirs.js')(sequelize, DataTypes)
+db.remettre = require('../models/remettre.js')(sequelize, DataTypes)
+
+db.devoir.hasMany(db.remettre, {
+    foreignKey: 'devoir_id',
+    as: 'remettre'
+})
+db.remettre.belongsTo(db.devoir, {
+    foreignKey: 'devoir_id',
+    as: 'devoirs'
+})
+
+db.user.hasMany(db.remettre, {
+    foreignKey: 'user_id',
+    as: 'remettre'
+})
+db.remettre.belongsTo(db.user, {
+    foreignKey: 'user_id',
+    as: 'users'
+})
+
+db.user.hasMany(db.devoir, {
+    foreignKey: 'userId_id',
+    as: 'devoirs'
+})
+db.devoir.belongsTo(db.user, {
+    foreignKey: 'userId_id',
+    as: 'users'
+})
+
+db.cours.hasMany(db.devoir, {
+    foreignKey: 'coursId_id',
+    as: 'devoir'
+})
+db.devoir.belongsTo(db.cours, {
+    foreignKey: 'coursId_id',
+    as: 'cours'
+})
 
 db.user.hasMany(db.cours, {
     foreignKey: 'user_id',

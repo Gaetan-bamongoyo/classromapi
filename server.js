@@ -1,8 +1,5 @@
 const express = require('express')
 const cors = require('cors')
-// const sequelize = require('./sequelize/connector')
-
-// sequelize.sync().then(()=> console.log('logging'))
 
 const app = express()
 
@@ -19,11 +16,15 @@ const routeruser = require('./routes/user')
 const routercours = require('./routes/cours')
 const routercontenucours = require('./routes/contenucours')
 const routersuivrecours = require('./routes/suivre')
+const routerdevoirs = require('./routes/devoirs')
+const routerremettre = require('./routes/remettre')
 // 
 app.use('/classrom/user', routeruser)
 app.use('/classrom/cours', routercours)
 app.use('/classrom/contenu', routercontenucours)
 app.use('/classrom/suivre', routersuivrecours)
+app.use('/classrom/devoir', routerdevoirs)
+app.use('/classrom/remettre', routerremettre)
 
 
 // test api
