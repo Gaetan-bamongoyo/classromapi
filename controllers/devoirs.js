@@ -19,7 +19,15 @@ const addDevoir = async (req, res) => {
         res.status(500).send({ message: 'Erreur lors de la création du cours', error });
     }
 }
+const getDevoirByCourdId = async (req, res)=>{
+    let id = req.params.id
+    const data = await Devoirs.findAll({
+        where: { coursId_id: id },
+    })
+    res.status(200).send(data)
+}
 
 module.exports = {
     addDevoir,
+    getDevoirByCourdId
 }

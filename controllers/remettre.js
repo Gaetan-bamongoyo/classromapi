@@ -19,6 +19,20 @@ const addRemettre = async (req, res) => {
     }
 }
 
+const getRemettreByDevoirsId = async (req, res)=>{
+    const { devoir_id, user_id } = req.body;
+    const data = await Remettre.findAll({
+        where: { devoir_id, user_id },
+        include: [
+            {
+                model: Users,
+                as: 'users'
+            }
+        ]
+    })
+    res.status(200).send(data)
+}
+
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
       cb(null, 'uploads')
@@ -30,21 +44,11 @@ const storage = multer.diskStorage({
 
 const upload = multer({
     storage: storage,
-    // limits: { fileSize: '100000' },
-    // fileFilter: (req, file, cb) => {
-    //     const fileTypes = /pdf/
-    //     const mimeType = fileTypes.test(file.mimetype)
-    //     const extname = fileTypes.test(path.extname(file.originalname))
-
-    //     if(mimeType && extname){
-    //         return cb(null, true)
-    //     }
-    //     cb('Give proper files')
-    // }
 }).single('fichier')
 
 module.exports = {
     addRemettre,
-    upload
+    upload,
+    getRemettreByDevoirsId
 }
 
