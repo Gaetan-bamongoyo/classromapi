@@ -26,6 +26,8 @@ app.use('/classrom/suivre', routersuivrecours)
 app.use('/classrom/devoir', routerdevoirs)
 app.use('/classrom/remettre', routerremettre)
 
+app.use('/uploads', express.static('./uploads'))
+
 
 // test api
 app.get('/', (req, res) => {
