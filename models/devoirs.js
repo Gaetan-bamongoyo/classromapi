@@ -3,6 +3,9 @@ module.exports = (sequelize, DataTypes)=>{
         annonce: {
             type: DataTypes.STRING
         },
+        date: {
+            type: DataTypes.STRING
+        },
         contenu: {
             type: DataTypes.TEXT('long')
         }

@@ -9,6 +9,7 @@ const addDevoir = async (req, res) => {
         let info = {
             annonce: req.body.annonce,
             contenu: req.body.contenu,
+            date: req.body.date,
             coursId_id: req.body.coursId_id,
             userId_id: req.body.userId_id,
         }
