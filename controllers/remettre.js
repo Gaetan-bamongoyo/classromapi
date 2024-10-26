@@ -19,6 +19,20 @@ const addRemettre = async (req, res) => {
     }
 }
 
+const getRemettreAllByDevoirsId = async (req, res)=>{
+    let id = req.params.id
+    const data = await Remettre.findAll({
+        where: { devoir_id: id },
+        include: [
+            {
+                model: Users,
+                as: 'users'
+            }
+        ]
+    })
+    res.status(200).send(data)
+}
+
 const getRemettreByDevoirsId = async (req, res)=>{
     const { devoir_id, user_id } = req.body;
     const data = await Remettre.findAll({
@@ -49,6 +63,7 @@ const upload = multer({
 module.exports = {
     addRemettre,
     upload,
-    getRemettreByDevoirsId
+    getRemettreByDevoirsId,
+    getRemettreAllByDevoirsId
 }
 
