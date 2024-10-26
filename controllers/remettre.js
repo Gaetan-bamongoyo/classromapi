@@ -19,7 +19,7 @@ const addRemettre = async (req, res) => {
     }
 }
 
-const getRemettreAllByDevoirsId = async (req, res)=>{
+const getRemettreAllByDevoirs = async (req, res) => {
     let id = req.params.id
     const data = await Remettre.findAll({
         where: { devoir_id: id },
@@ -64,6 +64,6 @@ module.exports = {
     addRemettre,
     upload,
     getRemettreByDevoirsId,
-    getRemettreAllByDevoirsId
+    getRemettreAllByDevoirs
 }
 
