@@ -3,6 +3,7 @@ const db = require('../sequelize/connector')
 
 const Users = db.user
 const Cours = db.cours
+const Suivre = db.suivrecours
 
 // Fonction pour générer un code aléatoire de 4 caractères
 function generateRandomCode(length) {
@@ -61,8 +62,29 @@ const getOnlyCoursById = async(req, res)=>{
     res.status(200).send(data)
 }
 
+const getAllParticipantByCoursId = async(req, res)=>{
+    let id = req.params.id
+    const data = await Cours.findOne({
+        where: {id : id},
+        include: [
+            {
+                model: Suivre,
+                as: 'suivrecours',
+                include: [
+                    {
+                        model: Users,
+                        as: 'suivreuser'
+                    }
+                ]
+            }
+        ]
+    })
+    res.status(200).send(data)
+}
+
 module.exports = {
     addCours,
     getAllCoursByIdUser,
-    getOnlyCoursById
+    getOnlyCoursById,
+    getAllParticipantByCoursId
 }
